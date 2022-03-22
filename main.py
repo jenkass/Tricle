@@ -18,4 +18,4 @@ async def root():
 
 models.Base.metadata.create_all(engine)
 
-app.mount("/images", StaticFiles(directory="/images"), name="images")
+app.mount("/images", StaticFiles(directory="images"), name="images")
