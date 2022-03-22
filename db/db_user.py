@@ -2,7 +2,7 @@ from sqlalchemy.orm import Session
 
 from db.models import DBUser
 from router.schemas import UserBase
-from hash import Hash
+from db.hash import Hash
 
 
 def create_user(db: Session, request: UserBase):
