@@ -8,8 +8,8 @@ class Hash:
 
     @staticmethod
     def bcrypt(password: str):
-        return pwd_cxt.encrypt(password)
+        return pwd_cxt.hash(password)
 
     @staticmethod
-    def verify_password(hashed_password: str, plain_password: str):
+    def verify_password(hashed_password, plain_password):
         return pwd_cxt.verify(plain_password, hashed_password)
