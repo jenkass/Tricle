@@ -11,7 +11,7 @@ function Post({ post }) {
     const [comments, setComments] = useState([])
 
     useEffect(() => {
-        if (post.image_url_type == "absolute") {
+        if (post.image_url_type === "absolute") {
             setImageUrl(post.image_url)
         } else {
             setImageUrl(BASE_URL + post.image_url)
@@ -20,7 +20,7 @@ function Post({ post }) {
 
 useEffect(() =>  {
     setComments(post.comments)
-})
+}, [])
 
     return (
         <div className="post">
