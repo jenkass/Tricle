@@ -20,6 +20,7 @@ venv
 docs.zip
 archive.zip
 *.db
+/images
 # dependencies
 app/node_modules
 app/.pnp
