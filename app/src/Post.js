@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import './Post.css';
+import {Avatar, Button} from '@material-ui/core'
 
 const BASE_URL = 'http://localhost:8000/'
 
@@ -23,7 +24,14 @@ useEffect(() =>  {
 
     return (
         <div className="post">
-            <img className="post_image" src={imageUrl}/>
+            <div className="post_header">
+                <Avatar alt="Catalin" src=""/>
+                <div className="post_header_info">
+                    <h3>{post.user.username}</h3>
+                    <Button className="post_delete">Delete</Button>
+                </div>
+            </div>
+            <img className="post_image" src={imageUrl} alt=""/>
             <h4 className="post_text">{post.caption}</h4>
             <div className="post_comments">
                 {
