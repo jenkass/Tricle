@@ -1,8 +1,13 @@
 * {
     margin: 0px;
+    padding: 0px;
 }
 
 
 .app {
     background-color: #FAFAFA;
+}
+
+.app_posts{
+    padding: 20px;
 }
