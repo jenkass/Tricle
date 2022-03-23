@@ -1,15 +1,44 @@
 import './App.css';
 import React, {useEffect, useState} from "react";
 import Post from './Post';
-import {Button} from '@material-ui/core';
+import {Button, Modal, makeStyles, Input} from '@material-ui/core';
 
 const BASE_URL = 'http://localhost:8000/'
 
+function getModalStyle() {
+  const top = 50;
+  const left = 50;
+  return {
+    top: `${top}%`,
+    left: `${left}%`,
+    transform: `translate(-${top}%, -${left}%)`,
+  }
+}
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    backgroundColor: theme.palette.background.paper,
+    position: 'absolute',
+    width: 400,
+    border: "2px solid white",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3)
+  }
+}))
+
 function App() {
+
+  const classes = useStyles();
 
   const [posts, setPosts] = useState([]); 
   const [OpenSignIn, setOpenSignIn] = useState(false);
   const [OpenSignUp, setOpenSignUp] = useState(false);
+  const [modalStyle, setModalStyle] = useState(getModalStyle);
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [authToken, setAuthToken] = useState(null);
+  const [authTokenType, setAuthTokenType] = useState(null);
+  const [userId, setUserId] = useState('');
 
   useEffect(() =>  {
     fetch(BASE_URL + "posts/all")
@@ -39,9 +68,54 @@ function App() {
   }, [])
 
 
+  const signIn = (event) => {
+    event.preventDefault();
+    let formData = new FormData();
+    formData.append('username', username)
+    formData.append('password', password)
+
+    const requestOptions = {
+      method: 'POST',
+      body: formData
+    }
+
+    fetch(BASE_URL + 'login', requestOptions)
+    .then(response => {
+      if (response.ok) {
+        return response.json();
+      }
+      throw response;
+    })
+    .then(data => {
+      setAuthToken(data.access_token)
+      setAuthToken(data.token_type)
+      setUserId(data.user_id)
+      setUsername(data.username)
+    })
+    .catch(error => {
+      alert(error);
+    })
+    
+    setOpenSignIn(false);
+  }
+
 
   return (
     <div className="app">
+
+      <Modal open={OpenSignIn} onClose={() => setOpenSignIn(false)}>
+        <div style={modalStyle} className={classes.paper}>
+          <form className="app_signin">
+            <center>
+              <img className="app_header_image" src="https://www.pnglib.com/wp-content/uploads/2021/02/letter-t-png_60212646d8d2a-768x792.png" alt="Tricle"/>
+            </center>
+            <Input placeholder="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
+            <Input placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
+            <Button type="submit" onClick={signIn}>Sign In</Button>
+          </form>
+        </div>
+      </Modal>
+
       <div className="app_header">
         <img className="app_header_image" src="https://www.pnglib.com/wp-content/uploads/2021/02/letter-t-png_60212646d8d2a-768x792.png" alt="Tricle"/>
         <h4 className="app_logoname">Tricle</h4>
