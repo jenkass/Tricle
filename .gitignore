@@ -20,3 +20,24 @@ venv
 docs.zip
 archive.zip
 *.db
+# dependencies
+app/node_modules
+app/.pnp
+app.pnp.js
+
+# testing
+app/coverage
+
+# production
+app/build
+
+# misc
+app.DS_Store
+app.env.local
+app.env.development.local
+app.env.test.local
+app.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
