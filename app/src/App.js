@@ -63,7 +63,7 @@ function App() {
     userId
       ? window.localStorage.setItem('userId', userId)
       : window.localStorage.removeItem('userId', userId);
-  }, [authToken, authTokenType, userId])
+  }, [authToken, authTokenType, username, userId])
 
   useEffect(() =>  {
     fetch(BASE_URL + "posts/all")
@@ -113,7 +113,7 @@ function App() {
     })
     .then(data => {
       setAuthToken(data.access_token)
-      setAuthToken(data.token_type)
+      setAuthTokenType(data.token_type)
       setUserId(data.user_id)
       setUsername(data.username)
     })
@@ -126,7 +126,7 @@ function App() {
 
   const signOut = (event) => {
     setAuthToken(null)
-    setAuthToken(null)
+    setAuthTokenType(null)
     setUserId('')
     setUsername('')
   }
@@ -188,34 +188,43 @@ function App() {
             <Input placeholder="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)}/>
             <Input placeholder="email" type="text" value={email} onChange={(e) => setEmail(e.target.value)}/>
             <Input placeholder="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-            <Button type="submit" onClick={signUp}>Sign Un</Button>
+            <Button type="submit" onClick={signUp}>Sign Up</Button>
           </form>
         </div>
       </Modal>
 
       <div className="app_header">
-        <img className="app_header_image" src="https://www.pnglib.com/wp-content/uploads/2021/02/letter-t-png_60212646d8d2a-768x792.png" alt="Tricle"/>
-        <h4 className="app_logoname">Tricle</h4>
-        {authToken ? (
-            <Button onClick={() => signOut()}>Logout</Button>
-          ) : (
-            <div>
-              <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
-              <Button onClick={() => setOpenSignUp(true)}>Sign Up</Button>
-            </div>
-          )
-        }
+        <div className="container">
+          <div className="container_logo">
+            <img className="app_header_image" src="https://www.pnglib.com/wp-content/uploads/2021/02/letter-t-png_60212646d8d2a-768x792.png" alt="Tricle"/>
+            <h4 className="app_logoname">Tricle</h4>
+          </div>
+          <div className="container_plus">
+            <img src="https://cdn.onlinewebfonts.com/svg/download_266883.png" alt="add_post" className="button_add_post"/>
+          </div>
+          <div className="container_button">
+            {authToken ? (
+              <Button onClick={() => signOut()}>Logout</Button>
+            ) : (
+              <div>
+                <Button onClick={() => setOpenSignIn(true)}>Sign In</Button>
+                <Button onClick={() => setOpenSignUp(true)}>Sign Up</Button>
+              </div>
+            )
+          }
+          </div>
+        </div>
       </div>
       <div className="app_posts">
       {
         posts.map(post => (
-          <Post post={post} authToken={authToken} authTokenType={authTokenType}/>
+          <Post post={post} AuthToken={authToken} AuthTokenType={authTokenType} username={username}/>
         ))
       }
       </div>
 
       {authToken ? (
-        <ImageUpload authToken={authToken} authTokenType={authTokenType} userId={userId}/>
+        <ImageUpload AuthToken={authToken} AuthTokenType={authTokenType} userId={userId}/>
       ) : (
         <h3>Yon need to login to upload</h3>
       )}

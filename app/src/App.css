@@ -30,10 +30,36 @@
     background-color: white;
     border-bottom: 1px solid lightgrey;
     object-fit: contain;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 20px;
+    padding: 0 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+}
+
+.container{
+    display: flex;
+    justify-content:space-between;
+}
+
+.container_logo{
+    display: flex;
+}
+
+.container_button{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.container_plus{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.button_add_post{
+
+    width: 40px;
+    height: 40px;
 }
 
 .app_signin {
