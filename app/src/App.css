@@ -20,7 +20,7 @@
 
 .app_logoname {
     font-weight: normal;
-    padding: 20px;
+    padding: 10px;
 }
 
 .app_header {
@@ -48,6 +48,8 @@
 .container_button{
     display: flex;
     justify-content: flex-end;
+    align-items: center;
+
 }
 
 .container_plus{

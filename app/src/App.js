@@ -34,6 +34,7 @@ function App() {
   const [posts, setPosts] = useState([]); 
   const [OpenSignIn, setOpenSignIn] = useState(false);
   const [OpenSignUp, setOpenSignUp] = useState(false);
+  const [OpenAddPost, setOpenAddPost] = useState(false);
   const [modalStyle, setModalStyle] = useState(getModalStyle);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -193,15 +194,28 @@ function App() {
         </div>
       </Modal>
 
+      <Modal open={OpenAddPost} onClose={() => setOpenAddPost(false)}>
+        <div style={modalStyle} className={classes.paper}>
+          <form className="app_signin">
+            <center>
+              <img className="app_header_image" src="https://www.pnglib.com/wp-content/uploads/2021/02/letter-t-png_60212646d8d2a-768x792.png" alt="Tricle"/>
+            </center>
+              <ImageUpload AuthToken={authToken} AuthTokenType={authTokenType} userId={userId}/>
+          </form>
+        </div>
+      </Modal>
+
       <div className="app_header">
         <div className="container">
           <div className="container_logo">
             <img className="app_header_image" src="https://www.pnglib.com/wp-content/uploads/2021/02/letter-t-png_60212646d8d2a-768x792.png" alt="Tricle"/>
             <h4 className="app_logoname">Tricle</h4>
           </div>
-          <div className="container_plus">
-            <img src="https://cdn.onlinewebfonts.com/svg/download_266883.png" alt="add_post" className="button_add_post"/>
-          </div>
+          {authToken && (
+            <div className="container_plus">
+                <Button onClick={() => setOpenAddPost(true)}><img className="button_add_post" src="https://cdn.onlinewebfonts.com/svg/download_266883.png" alt=""/></Button>
+            </div>
+          )}
           <div className="container_button">
             {authToken ? (
               <Button onClick={() => signOut()}>Logout</Button>
@@ -223,11 +237,7 @@ function App() {
       }
       </div>
 
-      {authToken ? (
-        <ImageUpload AuthToken={authToken} AuthTokenType={authTokenType} userId={userId}/>
-      ) : (
-        <h3>Yon need to login to upload</h3>
-      )}
+      
     </div>
     
   );

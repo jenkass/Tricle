@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Button} from '@material-ui/core';
+import {Button, Input} from '@material-ui/core';
 import './ImageUpload.css';
 
 const BASE_URL = 'http://localhost:8000/'
@@ -79,7 +79,7 @@ function ImageUpload({AuthToken, AuthTokenType, userId}) {
 
     return (
         <div className="image_upload">
-            <input type="text" placeholder="Enter a caption" onChange={(event) => setCaption(event.target.value)} value={caption}/>
+            <Input type="text" placeholder="Enter a caption" onChange={(event) => setCaption(event.target.value)} value={caption}/>
             <input type="file" id="fileInput" onChange={handleChange}/>
             <Button className="imageUpload_button"onClick={handleUpload}>Upload post</Button>
         </div>
