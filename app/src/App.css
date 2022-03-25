@@ -1,8 +1,70 @@
 * {
     margin: 0px;
+    padding: 0px;
 }
 
 
 .app {
     background-color: #FAFAFA;
+}
+
+.app_posts{
+    padding: 20px;
+}
+
+.app_header_image {
+    object-fit: contain;
+    width: 50px;
+
+}
+
+.app_logoname {
+    font-weight: normal;
+    padding: 10px;
+}
+
+.app_header {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: white;
+    border-bottom: 1px solid lightgrey;
+    object-fit: contain;
+    align-items: center;
+    padding: 0 20px;
+    font-family: 'Dancing Script', cursive;
+    font-size: 40px;
+}
+
+.container{
+    display: flex;
+    justify-content:space-between;
+}
+
+.container_logo{
+    display: flex;
+}
+
+.container_button{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
+}
+
+.container_plus{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+.button_add_post{
+
+    width: 40px;
+    height: 40px;
+}
+
+.app_signin {
+    display: flex;
+    flex-direction: column;
 }
