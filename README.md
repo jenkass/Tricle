@@ -20,7 +20,7 @@ All posts are sorted by publication date. Only the user who created the post can
 
     > cd Tricle
 
-##Build FastAPI
+## Build FastAPI
 
 1) Create a new virtual environment inside the directory:
 
