@@ -20,7 +20,7 @@ All posts are sorted by publication date. Only the user who created the post can
 
     > cd Tricle
 
-##Build FastAPI
+## Build FastAPI
 
 1) Create a new virtual environment inside the directory:
 
@@ -54,4 +54,27 @@ All posts are sorted by publication date. Only the user who created the post can
 
 ## FastAPI
 
-##React
+The application backend is built on the FastAPI framework.
+
+At localhost:8000/docs you can see all the documentation for the application.
+
+Interaction with the database is done using SQLAlchemy.
+
+User authorization is done using JWT.
+
+Application functionality:
+1) Registration/Authorization.
+2) View all posts
+3) Authorized user has the right to add a new post, delete a post, as well as add a new comment under any post
+
+## React
+
+The frontend of the application is built on the React framework.
+
+Components such as Button, Modal, Input are built using material-ui.
+
+User authorization is done by adding a token to localstorage.
+
+When a user logs out of the account, the token is removed from localstorage.
+
+Posts are sorted by publication date and time.
