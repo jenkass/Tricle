@@ -12,7 +12,7 @@ All posts are sorted by publication date. Only the user who created the post can
 
 1) Download and install python from the official website: https://www.python.org/downloads/
 
-2) Download and install node.js from the offical website: https://nodejs.org/en/download/
+2) Download and install node.js from the official website: https://nodejs.org/en/download/
 
 3) Enter at the command prompt ``git clone`` and go to this folder:
 
@@ -56,7 +56,7 @@ All posts are sorted by publication date. Only the user who created the post can
 
 The application backend is built on the FastAPI framework.
 
-At localhost:8000/docs you can see all the documentation for the application.
+At `localhost:8000/docs` you can see all the documentation for the application.
 
 Interaction with the database is done using SQLAlchemy.
 
